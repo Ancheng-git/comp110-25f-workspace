@@ -1,5 +1,7 @@
 """File to define River class."""
 
+__author__: str = "730922305"
+
 from ex06.fish import Fish
 from ex06.bear import Bear
 
@@ -22,21 +24,53 @@ class River:
             self.bears.append(Bear())
 
     def check_ages(self):
+        new_fish: list[Fish] = []
+        for i in self.fish:
+            if i.age <= 3:
+                new_fish.append(i)
+
+        new_bears: list[Bear] = []
+        for i in self.bears:
+            if i.age <= 5:
+                new_bears.append(i)
+
+        self.fish = new_fish
+        self.bears = new_bears
+
         return None
 
     def bears_eating(self):
+        for bear in self.bears:
+            if len(self.fish) >= 5:
+                self.remove_fish(3)
+                bear.eat(3)
+
         return None
 
     def check_hunger(self):
+        new_bears: list[Bear] = []
+        for i in self.bears:
+            if i.hunger_score >= 0:
+                new_bears.append(i)
+        self.bears = new_bears
         return None
 
     def repopulate_fish(self):
+        for i in range((len(self.fish) // 2) * 4):
+            self.fish.append(Fish())
         return None
 
     def repopulate_bears(self):
+        for i in range(len(self.bears) // 2):
+            self.bears.append(Bear())
         return None
 
     def view_river(self):
+        fish_pop: int = len(self.fish)
+        bear_pop: int = len(self.bears)
+        print(f"~~~ Day {self.day}: ~~~")
+        print(f"Fish population: {fish_pop}")
+        print(f"Bear population: {bear_pop}")
         return None
 
     def one_river_day(self):
@@ -61,3 +95,13 @@ class River:
         self.repopulate_bears()
         # Visualize River
         self.view_river()
+
+    def one_river_week(self):
+        for index in range(7):
+            self.one_river_day()
+        return None
+
+    def remove_fish(self, amount: int):
+        for i in range(amount):
+            self.fish.pop(0)
+        return None

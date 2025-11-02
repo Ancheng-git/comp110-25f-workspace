@@ -70,3 +70,11 @@ def update_attendance(log: dict[str, list[str]], day: str, student: str) -> None
     else:
         if student not in log[day]:
             log[day].append(student)
+
+
+def listify(d: dict[str, int]) -> list[str]:
+    lst: list[str] = []
+    for i in d:
+        if d[i] % 2 == 0:
+            lst.append(i)
+    return lst
