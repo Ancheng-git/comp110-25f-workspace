@@ -1,3 +1,5 @@
+"""Simulation of the river."""
+
 __author__: str = "730922305"
 
 from exercises.ex06.river import River

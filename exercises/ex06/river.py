@@ -7,13 +7,14 @@ from exercises.ex06.bear import Bear
 
 
 class River:
+    """The river class."""
 
     day: int
     fish: list[Fish]
     bears: list[Bear]
 
     def __init__(self, num_fish: int, num_bears: int):
-        """New River with num_fish Fish and num_bears Bears"""
+        """New River with num_fish Fish and num_bears Bears."""
         self.day: int = 0
         self.fish: list[Fish] = []
         self.bears: list[Bear] = []
@@ -24,6 +25,7 @@ class River:
             self.bears.append(Bear())
 
     def check_ages(self):
+        """Check the age of fishes and bears."""
         new_fish: list[Fish] = []
         for i in self.fish:
             if i.age <= 3:
@@ -40,6 +42,7 @@ class River:
         return None
 
     def bears_eating(self):
+        """Bears eat fishes."""
         for bear in self.bears:
             if len(self.fish) >= 5:
                 self.remove_fish(3)
@@ -48,6 +51,7 @@ class River:
         return None
 
     def check_hunger(self):
+        """Check the hunger score."""
         new_bears: list[Bear] = []
         for i in self.bears:
             if i.hunger_score >= 0:
@@ -56,11 +60,13 @@ class River:
         return None
 
     def repopulate_fish(self):
+        """Fish reproduction."""
         for i in range((len(self.fish) // 2) * 4):
             self.fish.append(Fish())
         return None
 
     def repopulate_bears(self):
+        """Bears reproduction."""
         for i in range(len(self.bears) // 2):
             self.bears.append(Bear())
         return None
@@ -74,7 +80,7 @@ class River:
         return None
 
     def one_river_day(self):
-        """Simulate one day of life in the river"""
+        """Simulate one day of life in the river."""
         # Increase day by 1
         self.day += 1
         # Simulate one day for all Bears
@@ -97,11 +103,13 @@ class River:
         self.view_river()
 
     def one_river_week(self):
+        """One week later."""
         for index in range(7):
             self.one_river_day()
         return None
 
     def remove_fish(self, amount: int):
+        """Remove first n fishes."""
         for i in range(amount):
             self.fish.pop(0)
         return None
