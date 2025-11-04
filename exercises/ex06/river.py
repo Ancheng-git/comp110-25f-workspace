@@ -72,6 +72,7 @@ class River:
         return None
 
     def view_river(self):
+        """View the whole river."""
         fish_pop: int = len(self.fish)
         bear_pop: int = len(self.bears)
         print(f"~~~ Day {self.day}: ~~~")

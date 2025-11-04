@@ -9,7 +9,7 @@ class Fish:
     age: int
 
     def __init__(self):
-        """Constructor"""
+        """Constructor."""
         self.age = 0
         return None
 
